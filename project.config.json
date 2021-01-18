@@ -26,7 +26,6 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "enableEngineNative": false,
     "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
@@ -40,6 +39,8 @@
   "libVersion": "1.9.94",
   "appid": "wxf59fdf91590d238f",
   "projectname": "jump-demo",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "list": []

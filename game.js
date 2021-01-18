@@ -1,6 +1,5 @@
-import './js/libs/weapp-adapter'
-import './js/libs/symbol'
+import './libs/weapp-adapter';
 
-import Main from './js/main'
+import main from './src/main';
 
-new Main()
+main.init();
