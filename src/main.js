@@ -31,13 +31,13 @@ class Main {
     var mesh = new THREE.Mesh(geometry, material);
     mesh.position.x = 0;
     mesh.position.y = 0;
-    mesh.position.z = 1;
+    mesh.position.z = 0;
     scene.add(mesh);
 
     camera.position.x = 0;
     camera.position.y = 0;
-    camera.position.z = 0;
-    camera.lookAt(new THREE.Vector3(0, 0, 1));
+    camera.position.z = 1;
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
 
     var currentAngle = 0;
     var lastTimestamp = Date.now();
@@ -46,7 +46,8 @@ class Main {
       var now = Date.now();
       var duration = now - lastTimestamp;
       lastTimestamp = now;
-      currentAngle = currentAngle + duration / 1000 * Math.PI;
+      currentAngle = currentAngle + duration / 1000 * Math.PI;// 2s转一圈
+      if(currentAngle >= 2 * Math.PI) currentAngle = 0;
     }
 
     var render = function () {
