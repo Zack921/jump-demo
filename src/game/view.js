@@ -12,8 +12,8 @@ class GameView {
   initGameOverPage(callbacks) {
     this.gameOverPage = new GameOverPage(callbacks);
     this.gameOverPage.init({
-      scene: this.gamePage.scene.instance,
-      camera: this.gamePage.camera.instance,
+      scene: this.gamePage.scene,
+      camera: this.gamePage.camera,
     });
   }
 

@@ -5,11 +5,7 @@ export default class GamePage {
 
   init() {
     console.log('game page init');
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.OrthographicCamera(-width / 2, width / 2,
-    height / 2, -height / 2, -1000, 1000);
+    this.testTriggle();
   }
 
   show() {
@@ -17,7 +13,6 @@ export default class GamePage {
     setTimeout(() => {
       this.callbacks.showGameOverPage();
     }, 2000);
-    this.testTriggle();
   }
 
   hide() {
@@ -25,6 +20,11 @@ export default class GamePage {
   }
 
   testTriggle() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    this.scene = new THREE.Scene();
+    this.camera = new THREE.OrthographicCamera(-width / 2, width / 2,
+    height / 2, -height / 2, -1000, 1000);
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas
