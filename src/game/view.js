@@ -4,16 +4,17 @@ import GameOverPage from '../views/gameOverPage';
 class GameView {
   constructor() {}
 
-  initGamePage(callbacks) {
+  initGamePage(callbacks, scene) {
     this.gamePage = new GamePage(callbacks);
-    this.gamePage.init();
+    this.gamePage.init({
+      scene,
+    });
   }
 
-  initGameOverPage(callbacks) {
+  initGameOverPage(callbacks, scene) {
     this.gameOverPage = new GameOverPage(callbacks);
     this.gameOverPage.init({
-      scene: this.gamePage.scene,
-      camera: this.gamePage.camera,
+      scene,
     });
   }
 

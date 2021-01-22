@@ -1,5 +1,6 @@
 import * as THREE from '../libs/three.js';
 import gameController from './game/controller';
+
 window.THREE = THREE;
 class Main {
   constructor() {

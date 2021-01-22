@@ -1,5 +1,6 @@
 import gameView from './view';
 import gameModel from './model';
+import scene from '../scene/scene';
 
 class GameController {
   constructor() {
@@ -20,6 +21,8 @@ class GameController {
   }
 
   initPages () {
+    this.scene = scene;
+    this.scene.init();
     const gamePageCallbacks = {
       showGameOverPage: () => {
         this.gameModel.setStage('gameOver');
@@ -30,8 +33,8 @@ class GameController {
         this.gameModel.setStage('game');
       }
     };
-    this.gameView.initGamePage(gamePageCallbacks);
-    this.gameView.initGameOverPage(gameOverPagesCallbacks);
+    this.gameView.initGamePage(gamePageCallbacks, this.scene);
+    this.gameView.initGameOverPage(gameOverPagesCallbacks, this.scene);
   }
 
   startGame() {

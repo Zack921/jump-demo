@@ -3,10 +3,9 @@ export default class GameOverPage {
     this.callbacks = callbacks;
   }
 
-  init(options) {
+  init({scene}) {
     console.log('game over page init');
-    this.camera = options.camera;
-    this.scene = options.scene;
+    this.scene = scene;
   }
 
   show() {
@@ -31,7 +30,7 @@ export default class GameOverPage {
 
     this.texture.needsUpdate = true;
 
-    this.scene.add(this.obj);
+    this.scene.instance.add(this.obj);
   }
 
   hide() {
