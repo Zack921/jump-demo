@@ -665,7 +665,11 @@
 	  ontouchend: null,
 
 	  head: new _HTMLElement2.default('head'),
-	  body: new _HTMLElement2.default('body'),
+		body: new _HTMLElement2.default('body'),
+		
+		createElementNS: function createElementNS(nameSpace, tagName) {
+			return this.createElement(tagName);
+		},
 
 	  createElement: function createElement(tagName) {
 	    if (tagName === 'canvas') {
