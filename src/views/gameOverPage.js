@@ -1,3 +1,5 @@
+import sceneConf from '../confs/scene-conf';
+
 export default class GameOverPage {
   constructor(callbacks) {
     this.callbacks = callbacks;
@@ -11,6 +13,7 @@ export default class GameOverPage {
   show() {
     console.log('game over page show');
 
+    const aspect = window.innerHeight / window.innerWidth;
     this.canvas = document.createElement('canvas');
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
@@ -24,13 +27,13 @@ export default class GameOverPage {
 
     this.texture = new THREE.Texture(this.canvas);
     this.material = new THREE.MeshBasicMaterial({ map: this.texture, transparent: true, side: THREE.DoubleSide });
-    this.geometry = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight);
+    this.geometry = new THREE.PlaneGeometry(sceneConf.frustumSize * 2, aspect * sceneConf.frustumSize * 2);
     this.obj = new THREE.Mesh(this.geometry, this.material);
-    this.obj.position.z = 2;
+    this.obj.position.z = 10;
 
     this.texture.needsUpdate = true;
 
-    this.scene.instance.add(this.obj);
+    this.scene.camera.instance.add( this.obj ); // 加入背景，因为是正对相机，所以添加到相机坐标系下
   }
 
   hide() {

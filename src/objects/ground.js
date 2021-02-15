@@ -1,4 +1,5 @@
 // 地面
+import Animation from '../../libs/animation';
 
 class Ground {
   constructor() {}
@@ -16,6 +17,11 @@ class Ground {
     this.instance.position.y = -16 / 3.2;
 
     this.instance.receiveShadow = true;
+  }
+
+  updatePosition(newTargetPosition) {
+    this.instance.position.x = newTargetPosition.x
+    this.instance.position.z = newTargetPosition.z
   }
 }
 

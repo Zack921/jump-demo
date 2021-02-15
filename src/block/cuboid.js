@@ -1,11 +1,10 @@
 import BaseBlock from './base';
 
 export default class CuboidBlock extends BaseBlock{
-  constructor (x, y, z, size, height) {
-    super('cuboid');
-    size = size || this.width;
-    height = height || this.height;
-    var geometry = new THREE.BoxGeometry(size, height, size);
+  constructor (x, y, z, width) {
+    super('cuboid', width);
+    const size = this.width;
+    var geometry = new THREE.BoxGeometry(size, this.height, size);
     var material = new THREE.MeshPhongMaterial({
       color: 0xffffff
     })

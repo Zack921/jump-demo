@@ -2,10 +2,10 @@ import blockConf from '../confs/block-conf';
 import Animation from '../../libs/animation';
 
 export default class BaseBlock {
-  constructor (type) {
+  constructor (type, width = blockConf.width) {
     this.type = type; // cuboid | cylinder
     this.height = blockConf.height;
-    this.width = blockConf.width;
+    this.width = width;
     this.state = 'stop';
     this.scale = 1;
   }
@@ -41,5 +41,18 @@ export default class BaseBlock {
     if(this.state === 'shrink') {
       this.doShrink() 
     }
+  }
+
+  getVertices () {
+    const vertices = [];
+    const centerPosition = {
+      x: this.instance.position.x,
+      z: this.instance.position.z
+    };
+    vertices.push([centerPosition.x + this.width / 2, centerPosition.z + this.width / 2]);
+    vertices.push([centerPosition.x + this.width / 2, centerPosition.z - this.width / 2]);
+    vertices.push([centerPosition.x - this.width / 2, centerPosition.z + this.width / 2]);
+    vertices.push([centerPosition.x - this.width / 2, centerPosition.z - this.width / 2]);
+    return vertices;
   }
 }

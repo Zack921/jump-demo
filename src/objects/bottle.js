@@ -99,6 +99,12 @@ class Bottle {
     this.state = 'jump';
   }
 
+  stop () {
+    this.state = 'stop';
+    this.flyingTime = 0;
+    this.scale = 1;
+  }
+
   doShrink() {
     const DELTA_SCALE = 0.005;
     const MIN_SCALE = 0.55;

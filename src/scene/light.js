@@ -1,3 +1,5 @@
+import Animation from '../../libs/animation';
+
 class Light {
   constructor() {
     this.instance = {}
@@ -30,6 +32,15 @@ class Light {
     this.instance.ambientLight = ambientLight;
     this.instance.directionLight = directionLight;
     this.instance.shadowTarget = shadowTarget;
+  }
+
+  updatePosition(newTargetPosition) {
+    Animation(this.instance.directionLight.position, {x: newTargetPosition.x + 10, y: newTargetPosition.y + 30, z: newTargetPosition.z + 20 }, 1, 'Linear', (data) => {
+      this.instance.directionLight.position[data.prop] = data.value;
+    });
+    Animation(this.instance.shadowTarget.position, newTargetPosition, 1, 'Linear', (data) => {
+      this.instance.shadowTarget.position[data.prop] = data.value;
+    });
   }
 }
 

@@ -1,11 +1,10 @@
 import BaseBlock from './base';
 
 export default class CylinderBlock extends BaseBlock{
-  constructor (x, y, z, r, height) {
-    super('cylinder');
-    r = r || this.width / 2;
-    height = height || this.height;
-    var geometry = new THREE.CylinderGeometry(r, r, height, 120);
+  constructor (x, y, z, width) {
+    super('cylinder', width);
+    const r = this.width / 2;
+    var geometry = new THREE.CylinderGeometry(r, r, this.height, 120);
     var material = new THREE.MeshPhongMaterial({
       color: 0xffffff
     })
