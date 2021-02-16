@@ -15,6 +15,9 @@ class GameController {
         case 'gameOver':
           this.gameView.showGameOverPage();
           break;
+        case 'restart':
+          this.gameView.restartGamePage();
+          break;
         default:
       }
     });
@@ -30,7 +33,7 @@ class GameController {
     };
     const gameOverPagesCallbacks = {
       gameRestart: () => {
-        this.gameModel.setStage('game');
+        this.gameModel.setStage('restart');
       }
     };
     this.gameView.initGamePage(gamePageCallbacks, this.scene);

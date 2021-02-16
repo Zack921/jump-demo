@@ -27,8 +27,6 @@ export default class GamePage {
     this.scene = scene;
     this.ground = ground;
     this.bottle = bottle;
-    this.ground.init();
-    this.bottle.init();
     this.initGround();
     this.initBottle();
     this.initBlock();
@@ -40,10 +38,12 @@ export default class GamePage {
   }
 
   initGround() {
+    this.ground.init();
     this.scene.instance.add( this.ground.instance );
   }
 
   initBottle() {
+    this.bottle.init();
     this.scene.instance.add( this.bottle.instance );
     this.bottle.showUp();
   }
@@ -98,6 +98,20 @@ export default class GamePage {
 
   }
 
+  resetBlock() {
+    let obj = this.scene.instance.getObjectByName('block');
+    while(obj) {
+      this.scene.instance.remove(obj);
+      if (obj.geometry) {
+        obj.geometry.dispose();
+      }
+      if (obj.material) {
+        obj.material.dispose();
+      }
+      obj = this.scene.instance.getObjectByName('block');
+    }
+  }
+
   render = () => {
     this.scene.render();
     this.bottle && this.bottle.update();
@@ -128,6 +142,7 @@ export default class GamePage {
   };
 
   handleTouchEnd = () => {
+    if(!this.touchStartTime) return;
     const duration = Date.now() - this.touchStartTime;
 
     this.bottle.velocity.vx = Math.min(duration / 6, 400);
@@ -142,6 +157,7 @@ export default class GamePage {
     this.curBlock.rebound();
     this.bottle.doRotate();
     this.bottle.jump();
+    this.touchStartTime = null;
   };
 
   setDirection(direction) {
@@ -216,5 +232,14 @@ export default class GamePage {
         this.callbacks.showGameOverPage();
       }
     }
+  }
+
+  restart() {
+    this.ground.reset();
+    this.scene.reset();
+    this.resetBlock();
+    this.bottle.reset();
+    this.initBlock();
+    this.bindEvent();
   }
 }

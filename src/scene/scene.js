@@ -45,6 +45,11 @@ class Scene {
     this.camera.updatePosition(targetPosition)
     this.light.updatePosition(targetPosition)
   }
+
+  reset() {
+    this.camera.reset();
+    this.light.reset();
+  }
 }
 
 export default new Scene();

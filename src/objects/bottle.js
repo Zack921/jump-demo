@@ -103,6 +103,10 @@ class Bottle {
     this.state = 'stop';
     this.flyingTime = 0;
     this.scale = 1;
+    this.velocity = {
+      vx: 0, // 水平方向速度
+      vy: 0, //竖直方向速度
+    };
   }
 
   doShrink() {
@@ -275,6 +279,12 @@ class Bottle {
           this.body.scale[data.prop] = data.value;
       }, 0.2);
     }
+  }
+
+  reset() {
+    this.instance.position.set(bottleConf.initPosition.x, bottleConf.initPosition.y + 30, bottleConf.initPosition.z);
+    this.stop();
+    this.showUp();
   }
 }
 

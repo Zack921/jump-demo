@@ -24,6 +24,13 @@ class Camera {
       this.target[data.prop] = data.value;
     });
   }
+
+  reset() {
+    this.instance.position.x = -10;
+    this.instance.position.y = 10;
+    this.instance.position.z = 10;
+    this.target = new THREE.Vector3(0, 0, 0);
+  }
 }
 
 export default new Camera();

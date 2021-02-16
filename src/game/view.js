@@ -26,6 +26,11 @@ class GameView {
   showGameOverPage() {
     this.gameOverPage.show();
   }
+
+  restartGamePage() {
+    this.gameOverPage.hide();
+    this.gamePage.restart();
+  }
 }
 
 export default new GameView();

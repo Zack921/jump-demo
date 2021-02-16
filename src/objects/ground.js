@@ -23,6 +23,11 @@ class Ground {
     this.instance.position.x = newTargetPosition.x
     this.instance.position.z = newTargetPosition.z
   }
+
+  reset() {
+    this.instance.position.x = 0;
+    this.instance.position.z = 0;
+  }
 }
 
 export default new Ground();

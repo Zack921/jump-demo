@@ -8,6 +8,7 @@ export default class GameOverPage {
   init({scene}) {
     console.log('game over page init');
     this.scene = scene;
+    this.bindEvent();
   }
 
   show() {
@@ -38,6 +39,21 @@ export default class GameOverPage {
 
   hide() {
     console.log('game over page hide');
+    if(this.obj) this.obj.visible = false;
+  }
+
+  bindEvent() {
+    canvas.addEventListener('touchend', this.handleTouchend)
+  }
+
+  removeEvent() {
+    canvas.removeEventListener('touchend', this.handleTouchend)
+  }
+
+  handleTouchend = () => {
+    if(this.obj && this.obj.visible) {
+      this.callbacks.gameRestart();
+    }
   }
 
 }

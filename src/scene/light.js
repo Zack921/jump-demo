@@ -42,6 +42,15 @@ class Light {
       this.instance.shadowTarget.position[data.prop] = data.value;
     });
   }
+
+  reset() {
+    this.instance.directionLight.position.x = 10;
+    this.instance.directionLight.position.y = 30;
+    this.instance.directionLight.position.z = 20;
+    this.instance.shadowTarget.position.x = 0;
+    this.instance.shadowTarget.position.y = 0;
+    this.instance.shadowTarget.position.z = 0;
+  }
 }
 
 export default new Light();
