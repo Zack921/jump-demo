@@ -2,6 +2,7 @@ import CuboidBlock from '../block/cuboid';
 import CylinderBlock from '../block/cylinder';
 import ground from '../objects/ground';
 import bottle from '../objects/bottle';
+import score from '../objects/score';
 import bottleConf from '../confs/bottle-conf';
 import utils from '../utils/index';
 
@@ -24,9 +25,12 @@ export default class GamePage {
 
   init({scene}) {
     console.log('game page init');
+    this.scoreNum = 0;
     this.scene = scene;
     this.ground = ground;
     this.bottle = bottle;
+    this.score = score;
+    this.initScore();
     this.initGround();
     this.initBottle();
     this.initBlock();
@@ -35,6 +39,23 @@ export default class GamePage {
 
   show() {
     console.log('game page show');
+  }
+
+  initScore() {
+    this.score.init({
+      fillStyle: 0x666699,
+    });
+    this.score.instance.position.x = -20;
+    this.score.instance.position.y = 40;
+    this.scene.camera.instance.add( this.score.instance );
+  }
+
+  updateScore() {
+    this.scene.camera.instance.remove( this.score.instance );
+    this.score.updateScore(this.scoreNum);
+    this.score.instance.position.x = -20;
+    this.score.instance.position.y = 40;
+    this.scene.camera.instance.add( this.score.instance );
   }
 
   initGround() {
@@ -225,7 +246,11 @@ export default class GamePage {
         this.bottle.instance.position.x = this.bottle.destination[0];
         this.bottle.instance.position.z = this.bottle.destination[1];
         this.addNextBlock();
+        this.scoreNum++;
+        this.updateScore();
       } else { //游戏结束
+        this.scoreNum = 0;
+        this.updateScore();
         this.bottle.stop();
         this.removeEvent();
         this.bottle.instance.position.y = -100;
