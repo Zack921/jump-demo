@@ -20,12 +20,13 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": true,
+    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
+    "enableEngineNative": false,
     "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
@@ -37,7 +38,7 @@
   },
   "compileType": "game",
   "libVersion": "1.9.94",
-  "appid": "wxf59fdf91590d238f",
+  "appid": "wxc4ca6cffec968e4e",
   "projectname": "jump-demo",
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
